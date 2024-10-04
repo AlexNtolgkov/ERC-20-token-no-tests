@@ -1,66 +1,91 @@
-## Foundry
+# Beginning Solidity Token Project
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
 
-Foundry consists of:
+This project implements a simple ERC20 token using Solidity and Foundry. It includes two main contracts: `BeginningSolidityToken`, which uses OpenZeppelin's ERC20 implementation, and `BeginningSolidityTokenManual`, which is a manual implementation of the ERC20 standard.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Project Structure
 
-## Documentation
+```
+.
+├── .github/workflows
+├── lib
+├── script
+│   └── DBeginningSolidityToken.s.sol
+├── src
+│   ├── BeginningSolidityToken.sol
+│   └── BeginningSolidityTokenManual.sol
+├── .gitignore
+├── .gitmodules
+├── README.md
+└── foundry.toml
+```
 
-https://book.getfoundry.sh/
+## Contracts
+
+### BeginningSolidityToken
+
+This contract extends OpenZeppelin's ERC20 implementation. It creates a token named "BeginningSolidityToken" with the symbol "BST".
+
+### BeginningSolidityTokenManual
+
+This is a manual implementation of the ERC20 standard, including all required functions and events.
+
+## Deployment Script
+
+The `DBeginningSolidityToken.s.sol` script in the `script` folder is used to deploy the `BeginningSolidityToken` contract with an initial supply of 1000 tokens.
+
+## Setup Instructions
+
+1. Ensure you have [Foundry](https://book.getfoundry.sh/getting-started/installation) installed.
+
+2. Clone the repository:
+   ```
+   git clone <your-repo-url>
+   cd beginning-solidity-token
+   ```
+
+3. Install dependencies:
+   ```
+   forge install
+   ```
 
 ## Usage
 
-### Build
+### Compiling
 
-```shell
-$ forge build
+Compile the contracts using:
+
+```
+forge build
 ```
 
-### Test
+### Testing
 
-```shell
-$ forge test
+Run tests (if any) using:
+
+```
+forge test
 ```
 
-### Format
+### Deployment
 
-```shell
-$ forge fmt
+To deploy the contract:
+
+```
+forge script script/DBeginningSolidityToken.s.sol --rpc-url <your-rpc-url> --private-key <your-private-key> --broadcast
 ```
 
-### Gas Snapshots
+Replace `<your-rpc-url>` and `<your-private-key>` with your actual RPC URL and private key.
 
-```shell
-$ forge snapshot
-```
+## License
 
-### Anvil
+This project is licensed under the MIT License.
 
-```shell
-$ anvil
-```
+## Contributing
 
-### Deploy
+Contributions are welcome. Please open an issue or submit a pull request.
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+## Security
 
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+This is a learning project and has not been audited. Do not use in production without proper review and additional testing.
